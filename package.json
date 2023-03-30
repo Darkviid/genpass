@@ -1,0 +1,41 @@
+{
+  "name": "SuperGenPass",
+  "version": "0.3.11",
+  "dependencies": {
+    "crypto-js": "^3.1.6",
+    "jquery": "^3.1.0"
+  },
+  "devDependencies": {
+    "bookmarkleter": "^0.2.2",
+    "browserify": "^13.1.0",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^6.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-cssmin": "^4.0.0",
+    "grunt-contrib-jshint": "^3.2.0",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-load-options": "^0.2.1",
+    "grunt-manifest": "^0.4.4",
+    "grunt-static-inline": "^0.1.9",
+    "grunt-template": "^1.0.0",
+    "intern": "^4.10.1",
+    "load-grunt-tasks": "^3.5.0",
+    "qunitjs": "^2.0.1"
+  },
+  "description": "A bookmarklet password generator.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "grunt qunit && [ \"$TRAVIS_PULL_REQUEST\" != \"true\" ] && node_modules/.bin/intern-runner config=test/intern/main"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chriszarate/supergenpass"
+  },
+  "author": {
+    "name": "Darkvid",
+    "url": "http://darkvid.me"
+  },
+  "license": "GPL-2.0"
+}
