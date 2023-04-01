@@ -6,7 +6,7 @@ void (function ($) {
 
   // Configuration
   var version = 20150216;
-  var domain = 'https://darkviid.github.io/genpass/';
+  var domain = 'https://darkviid.github.io';
   var mobile = 'https://darkviid.github.io/genpass/mobile/';
   var minFrameArea = 100000;
   var loadTimeout = 2; // seconds
@@ -109,11 +109,12 @@ void (function ($) {
     };
 
     // If SGP doesn't load after a timeout, offer mobile version.
-    var loadTimeoutID = setTimeout(linkMobileVersion, loadTimeout * 1000);
+    var loadTimeoutID = setTimeout(linkMobileVersion, loadTimeout * 10000);
 
     var postMessage = function () {
       // Send current bookmarklet version to SGP generator. (Also communicates
       // current URL and opens channel for response.)
+      console.log('Post Message');
       try {
         this.contentWindow.postMessage('{"version":' + version + '}', domain);
       } catch (e) {
@@ -146,7 +147,10 @@ void (function ($) {
 
     var receiveMessage = function (e) {
       var post = e.originalEvent;
+      console.log('Domain %s',domain);
+      console.log(post);
       if (post.origin === domain && typeof post.data !== 'undefined') {
+
         removeLoadingIndicator();
         clearTimeout(loadTimeoutID);
         processMessage(JSON.parse(post.data));

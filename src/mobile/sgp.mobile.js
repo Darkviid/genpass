@@ -24,7 +24,7 @@ var noReferral = [
   'www.bing.com',
   'duckduckgo.com',
   'r.search.yahoo.com'
-];
+];  
 
 var localizations = {
   'en':    ['Master password', 'Domain / URL', 'Generate'],
@@ -244,6 +244,8 @@ var populateGeneratedPassword = function (generatedPassword) {
   $el.Output.text(generatedPassword);
   $el.Result.addClass('Offer').removeClass('Reveal');
   shortcut.add('Ctrl+H', toggleGeneratedPassword);
+  $el.CopyButton.trigger('click');
+
 };
 
 var toggleGeneratedPassword = function () {
@@ -348,8 +350,11 @@ $el.CopyButton.on('click', function (e) {
   selection.addRange(range);
 
   try {
-    success = document.execCommand('copy');
-  } catch (err) {}
+    //success = document.execCommand('copy');
+    success = true;
+    var a = $el.Output.get(0);
+    navigator.clipboard.writeText(a.innerHTML);
+  } catch (err) {console.log('error copying');}
 
   selection.removeAllRanges();
 
